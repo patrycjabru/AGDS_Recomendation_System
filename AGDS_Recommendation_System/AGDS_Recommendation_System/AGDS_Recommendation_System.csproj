@@ -42,17 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttributeClassNode.cs" />
-    <Compile Include="AttributeNode.cs" />
-    <Compile Include="EntityNode.cs" />
-    <Compile Include="IrisDTO.cs" />
+    <Compile Include="AGDS\AttributeClassNode.cs" />
+    <Compile Include="AGDS\AttributeNode.cs" />
+    <Compile Include="AGDS\EntityNode.cs" />
+    <Compile Include="AGDS\IrisDTO.cs" />
+    <Compile Include="KNN\KNN.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueClassNode.cs" />
-    <Compile Include="ValueNode.cs" />
+    <Compile Include="AGDS\ValueClassNode.cs" />
+    <Compile Include="AGDS\ValueNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

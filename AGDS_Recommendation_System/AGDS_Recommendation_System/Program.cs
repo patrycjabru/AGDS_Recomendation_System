@@ -21,6 +21,11 @@ namespace AGDS_Recommendation_System
 			};
 			var classAttribute = new AttributeClassNode("Species");
 			var entities = MigrateData(data, attributes, classAttribute);
+
+
+			var knn = new KNN.KNN(3);
+
+			var neighbors = knn.FindNeighbors(entities[0]);
 		}
 
 		public static List<EntityNode> MigrateData(List<IrisDTO> data, List<AttributeNode> attributes, AttributeClassNode attributeClassNode)

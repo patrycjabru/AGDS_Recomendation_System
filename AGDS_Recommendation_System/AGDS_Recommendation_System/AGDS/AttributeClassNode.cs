@@ -25,7 +25,6 @@ namespace AGDS_Recommendation_System
 			var valueNode = new ValueClassNode(value, this, entityNode);
 			Values.Add(valueNode);
 			return valueNode;
-
 		}
 	}
 }

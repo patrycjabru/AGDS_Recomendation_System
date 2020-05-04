@@ -10,13 +10,21 @@ namespace AGDS_Recommendation_System
 	{
 		public float Value { get; set; }
 		public AttributeNode Attribute { get; set; }
-		public EntityNode Entity { get; set; }
+		public List<EntityNode> Entities { get; set; }
 
 		public ValueNode(float value, AttributeNode attribute, EntityNode entity)
 		{
 			Value = value;
 			Attribute = attribute;
-			Entity = entity;
+			Entities = new List<EntityNode>()
+			{
+				entity
+			};
+		}
+
+		public void AddEntity(EntityNode entity)
+		{
+			Entities.Add(entity);
 		}
 	}
 }
