@@ -26,6 +26,12 @@ namespace AGDS_Recommendation_System
 			var knn = new KNN.KNN(3);
 
 			var neighbors = knn.FindNeighbors(entities[0]);
+
+			Console.WriteLine($"Neighbors of node number {entities[0].Id} are nodes:");
+			foreach (var n in neighbors)
+			{
+				Console.WriteLine(n.Id);
+			}
 		}
 
 		public static List<EntityNode> MigrateData(List<IrisDTO> data, List<AttributeNode> attributes, AttributeClassNode attributeClassNode)

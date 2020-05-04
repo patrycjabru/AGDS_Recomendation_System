@@ -24,14 +24,17 @@ namespace AGDS_Recommendation_System.KNN
 
 			foreach (var nextClosestValue in topClosestValues)
 			{
-				foreach (var entity in nextClosestValue.Value.Entities)
+				foreach (var entity in nextClosestValue.Item2.Entities)
 				{
 					var distance = CalculateDistance(entity, node);
 					RankTable.Add(new Tuple<double, EntityNode>(distance, entity));
 				}
 			}
 
-			return RankTable.OrderByDescending(x => x.Item1).Select(x => x.Item2).Take(k).ToList();
+			var nodeInRankTable = RankTable.Find(x => x.Item2.Equals(node));
+			RankTable.Remove(nodeInRankTable);
+
+			return RankTable.OrderBy(x => x.Item1).Select(x => x.Item2).Take(k).ToList();
 		}
 
 		private float CalculateDistance(EntityNode entity, EntityNode node)
@@ -46,15 +49,17 @@ namespace AGDS_Recommendation_System.KNN
 			return totalDistance;
 		}
 
-		private SortedList<double, ValueNode> FindClosestValues(SortedList<double, ValueNode> valuesList, ValueNode inputValue)
+		private List<Tuple<double, ValueNode>> FindClosestValues(SortedList<double, ValueNode> valuesList, ValueNode inputValue)
 		{
-			var topClosestList = new SortedList<double, ValueNode>();
+			var topClosestList = new List<Tuple<double, ValueNode>>();
 			foreach (var v in valuesList)
 			{
-				topClosestList.Add(v.Value.Value - inputValue.Value, v.Value);
+				topClosestList.Add(
+					new Tuple<double, ValueNode>(Math.Abs(v.Value.Value - inputValue.Value), v.Value)
+					);
 			}
 
-			return topClosestList;
+			return topClosestList.OrderBy(x => x.Item1).ToList();
 		}
 	} 
 }
