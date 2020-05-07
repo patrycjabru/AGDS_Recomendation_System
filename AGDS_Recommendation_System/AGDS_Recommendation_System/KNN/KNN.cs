@@ -24,6 +24,8 @@ namespace AGDS_Recommendation_System.KNN
 
 			foreach (var nextClosestValue in topClosestValues)
 			{
+				if (RankTable.Count >= k && nextClosestValue.Item1 > RankTable.OrderBy(x => x.Item1).Take(k).Last().Item1)
+					break;
 				foreach (var entity in nextClosestValue.Item2.Entities)
 				{
 					var distance = CalculateDistance(entity, node);
