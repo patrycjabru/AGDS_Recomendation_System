@@ -45,7 +45,7 @@ namespace AGDS_Recommendation_System
 
 			var neighbors = knn.FindNeighbors(entities[entityNumber]);
 
-			Console.WriteLine($"\nNeighbors of node number {entities[entityNumber].Id} are nodes:");
+			Console.WriteLine($"\nNeighbors of entity number {entities[entityNumber].Id} are entities:");
 			foreach (var n in neighbors)
 			{
 				Console.WriteLine(n.Id);
