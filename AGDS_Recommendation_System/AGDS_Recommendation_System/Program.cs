@@ -25,13 +25,25 @@ namespace AGDS_Recommendation_System
 
 			var knn = new KNN.KNN(3);
 
-			var neighbors = knn.FindNeighbors(entities[0]);
+			var entityNumber = 0;
+			while (true)
+			{
+				Console.WriteLine("Write a number of entity");
+				entityNumber = Convert.ToInt32(Console.ReadLine());
+				if (entityNumber >= 0 && entityNumber < entities.Count)
+					break;
+				Console.WriteLine("\nInvalid input\n");
+			}
 
-			Console.WriteLine($"Neighbors of node number {entities[0].Id} are nodes:");
+			var neighbors = knn.FindNeighbors(entities[entityNumber]);
+
+			Console.WriteLine($"\nNeighbors of node number {entities[entityNumber].Id} are nodes:");
 			foreach (var n in neighbors)
 			{
 				Console.WriteLine(n.Id);
 			}
+
+			Console.ReadKey();
 		}
 
 		public static List<EntityNode> MigrateData(List<IrisDTO> data, List<AttributeNode> attributes, AttributeClassNode attributeClassNode)
