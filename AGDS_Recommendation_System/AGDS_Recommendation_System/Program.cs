@@ -22,8 +22,16 @@ namespace AGDS_Recommendation_System
 			var classAttribute = new AttributeClassNode("Species");
 			var entities = MigrateData(data, attributes, classAttribute);
 
-
-			var knn = new KNN.KNN(3);
+			var neighborsNumber = 0;
+			while (true)
+			{
+				Console.WriteLine("Write a number of neighbors to find");
+				neighborsNumber = Convert.ToInt32(Console.ReadLine());
+				if (neighborsNumber >= 0 && neighborsNumber < entities.Count)
+					break;
+				Console.WriteLine("\nInvalid input\n");
+			}
+			var knn = new KNN.KNN(neighborsNumber);
 
 			var entityNumber = 0;
 			while (true)
